@@ -7,6 +7,7 @@ export type TaskType = {
 type PropsType = {
 	title: string
 	tasks: Array<TaskType>
+	removeTask: Function
 }
 
 const Todolist = (Props: PropsType) => {
@@ -18,18 +19,20 @@ const Todolist = (Props: PropsType) => {
 				<button>+</button>
 			</div>
 			<ul>
-				<li>
-					<input type='checkbox' checked={Props.tasks[0].isDone} />
-					<span>{Props.tasks[0].title}</span>
-				</li>
-				<li>
-					<input type='checkbox' checked={Props.tasks[1].isDone} />
-					<span>{Props.tasks[1].title}</span>
-				</li>
-				<li>
-					<input type='checkbox' checked={Props.tasks[2].isDone} />
-					<span>{Props.tasks[2].title}</span>
-				</li>
+				{/* МАП - это метод массива который на основе элементов в массиве создает другой элемент  */}
+				{Props.tasks.map(t => (
+					<li>
+						<input type='checkbox' checked={t.isDone} />
+						<span>{t.title}</span>
+						<button
+							onClick={() => {
+								Props.removeTask(t.id)
+							}}
+						>
+							x
+						</button>
+					</li>
+				))}
 			</ul>
 			<div>
 				<button>All</button>
@@ -40,4 +43,4 @@ const Todolist = (Props: PropsType) => {
 	)
 }
 
-export default Todolist;
+export default Todolist
