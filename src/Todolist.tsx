@@ -38,9 +38,27 @@ const Todolist = (Props: PropsType) => {
 				))}
 			</ul>
 			<div>
-				<button onClick={() => { Props.changeFilter("all") }}>All</button>
-				<button onClick={() => { Props.changeFilter("active") }}>Active</button>
-				<button onClick={() => { Props.changeFilter("completed") }}>Completed</button>
+				<button
+					onClick={() => {
+						Props.changeFilter('all')
+					}}
+				>
+					All
+				</button>
+				<button
+					onClick={() => {
+						Props.changeFilter('active')
+					}}
+				>
+					Active
+				</button>
+				<button
+					onClick={() => {
+						Props.changeFilter('completed')
+					}}
+				>
+					Completed
+				</button>
 			</div>
 		</div>
 	)
